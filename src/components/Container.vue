@@ -21,7 +21,7 @@
           </p>
           <router-link
             class="btn btn-outline-light"
-            :to="`/edit-registro/${proyect.id}`"
+            :to="`/editProyect/${proyect.id}`"
             >Edit
           </router-link>
           <button @click="deleteProyect" href="#" class="btn btn-outline-light">
@@ -63,8 +63,22 @@ export default {
         });
       }
     },
-    deleteProyect(){
+     async deleteProyect(){
+       const data = await this.proyects
+     
+      // const id = this.proyects.id;
+        // await fetch(
+        //   `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${id}.json`,
+        //   {
+        //     method:"PATCH",
+        //     body: JSON.stringify({status:false}),
+        //   }
+
+        // )
+        console.log(data);
 }
   },
 };
 </script>
+
+// :to="`/edit-registro/${proyect.id}`"

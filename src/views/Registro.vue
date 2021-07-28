@@ -75,34 +75,31 @@ export default {
   data() {
     return {
       registerProyect: {
-        // title: "",
-        // description: "",
-        // date: "",
-        // langs: [],
-        // status: true,
+        title: "",
+        description: "",
+        date: "",
+        langs: [],
+        status: true,
       },
     };
   },
   mounted() {
-    this.editProyect();
+    // this.editProyect();
   },
   methods: {
-    async editProyect() {
-      const id = this.$route.params.id
-
-      const res = await fetch(`https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${id}.json`)
-
-      const data = await res.json();
-      this.registerProyect = data 
-    },
-
-    // async addProyect() {
-    //   await fetch("https://vue-dlt-default-rtdb.firebaseio.com/Proyects.json", {
-    //     method: "POST",
-    //     body: JSON.stringify(this.registerProyect),
-    //   });
-    //   console.log(this.registerProyect);
+    // async editProyect() {
+    //   const id = this.$route.params.id
+    //   const res = await fetch(`https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${id}.json`)
+    //   const data = await res.json();
+    //   this.registerProyect = data 
     // },
+    async addProyect() {
+      await fetch("https://vue-dlt-default-rtdb.firebaseio.com/Proyects.json", {
+        method: "POST",
+        body: JSON.stringify(this.registerProyect),
+      });
+      console.log(this.registerProyect);
+    },
   },
 };
 </script>

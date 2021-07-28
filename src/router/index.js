@@ -42,6 +42,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "proyectos" */ "../views/Registro"),
   },
+  {
+    path: "/editProyect/:id",
+    name: "editProyect",
+    // route level code-splitting
+    // this generates a separate chunk (proyectos.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "proyectos" */ "../views/EditProyect"),
+  },
 ];
 
 const router = createRouter({
