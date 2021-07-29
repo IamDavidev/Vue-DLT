@@ -62,7 +62,10 @@
             <option value="css-html">Css-html</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-danger">Register</button>
+        <button type="submit" class="btn btn-outline-light">Register</button>
+        <button @click="deleteProyect" href="#" class="btn  btn-danger  mx-3">
+          Delete
+        </button>
       </form>
       <hr />
       <!-- {{ registerProyect }} -->
@@ -99,6 +102,16 @@ export default {
           body: JSON.stringify(this.registerProyect),
         }
       );
+    },
+    async deleteProyect() {
+      await fetch(
+        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ status: false }),
+        }
+      );
+      console.log(this.registerProyect.status)
     },
   },
 };

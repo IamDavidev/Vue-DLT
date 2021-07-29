@@ -24,12 +24,9 @@
             :to="`/editProyect/${proyect.id}`"
             >Edit
           </router-link>
-          <button @click="deleteProyect" href="#" class="btn btn-outline-light">
-            Delete
-          </button>
         </div>
         <div class="card-footer text-muted">
-          {{ proyect.date }}
+          {{ proyect.data.date }}
         </div>
       </div>
     </div>
@@ -41,6 +38,7 @@ import Registro from "../views/Registro";
 export default {
   data: () => ({
     proyects: [],
+    id:'hola',
   }),
   components: { Registro },
   created() {
@@ -58,25 +56,12 @@ export default {
         this.proyects.push({
 
           id: i,
-
+        
           data: data[i],
         });
       }
+    
     },
-     async deleteProyect(){
-       const data = await this.proyects
-     
-      // const id = this.proyects.id;
-        // await fetch(
-        //   `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${id}.json`,
-        //   {
-        //     method:"PATCH",
-        //     body: JSON.stringify({status:false}),
-        //   }
-
-        // )
-        console.log(data);
-}
   },
 };
 </script>
