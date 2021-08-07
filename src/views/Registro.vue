@@ -94,7 +94,9 @@ export default {
     //   this.registerProyect = data 
     // },
     async addProyect() {
-      await fetch("https://vue-dlt-default-rtdb.firebaseio.com/Proyects.json", {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      await fetch(`https://vue-dlt-default-rtdb.firebaseio.com/Proyects.json?auth=${user.idToken}`, {
         method: "POST",
         body: JSON.stringify(this.registerProyect),
       });

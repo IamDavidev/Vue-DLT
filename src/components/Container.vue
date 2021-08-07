@@ -51,6 +51,8 @@ export default {
     async getProyects() {
       const user = JSON.parse(localStorage.getItem("user"))
 
+      console.log(user.idToken);
+
       const res = await fetch(
       `https://vue-dlt-default-rtdb.firebaseio.com/Proyects.json?auth=${user.idToken}`
       );
@@ -62,8 +64,8 @@ export default {
           data: data[i],
         });
       }
-      
-      
+
+
       // console.log(this.proyects.status);
 
 

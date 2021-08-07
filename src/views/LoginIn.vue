@@ -72,30 +72,30 @@ export default {
   },
   methods: {
     async login() {
+      const API_KEY = "AIzaSyAQyasVK2_sFpv3iS66C19n4zv-l-K2YeE";
+      const res = await fetch(
+        ` https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password,
+            returnSecureToken: true,
+          }),
+        }
+      );
+      const err = await res.json();
       try {
-        const API_KEY = "AIzaSyAQyasVK2_sFpv3iS66C19n4zv-l-K2YeE";
-        const res = await fetch(
-          ` https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: this.email,
-              password: this.password,
-              returnSecureToken: true,
-            }),
-          }
-        );
-        const err = await res.json();
         if (err.error.message !== undefined) {
           return (
             (this.error = "there was an error with the email or password"),
             (this.err = true)
           );
         }
-        localStorage.setItem("user", JSON.stringify(await res.json()));
-        // console.log(err);
+        localStorage.setItem("user", JSON.stringify(res));
+        console.log(err);
       } catch (err) {
-        localStorage.setItem("user", JSON.stringify(await res.json()));
+        console.log(res);
         route.push("/proyectos");
       }
     },

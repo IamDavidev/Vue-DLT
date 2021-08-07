@@ -99,16 +99,19 @@ export default {
   methods: {
     async editProyect() {
       //   const id = this.$route.params.id;
+      const user = JSON.parse(localStorage.getItem("user"))
       const res = await fetch(
-        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`
+        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json?auth=${user.idToken}`
       );
       const data = await res.json();
       this.registerProyect = data;
     },
+
     async deleteProyect() {
+      const user = JSON.parse(localStorage.getItem("user"))
       const deleteStatus = this.registerProyect.statu;
       const res = await fetch(
-        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
+        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json?auth=${user.idToken}`,
         {
           method: "PATCH",
           body: JSON.stringify({ deleteStatus: false }),
@@ -117,9 +120,12 @@ export default {
       const data = await res.json();
       console.log(deleteStatus);
     },
+
+    
     async updateProyect() {
+      const user = JSON.parse(localStorage.getItem("user"))
       await fetch(
-        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
+        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json${user.idToken}`,
         {
           method: "PATCH",
           body: JSON.stringify(this.registerProyect),
