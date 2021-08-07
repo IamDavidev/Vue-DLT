@@ -98,7 +98,7 @@ export default {
         method: "POST",
         body: JSON.stringify(this.registerProyect),
       });
-      console.log(this.registerProyect);
+      
     },
   },
 };

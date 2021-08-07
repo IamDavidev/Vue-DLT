@@ -28,28 +28,37 @@ const routes = [
     path: "/registro",
     name: "Registro",
     // route level code-splitting
-    // this generates a separate chunk (proyectos.[hash].js) for this route
+    // this generates a separate chunk (registro.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "proyectos" */ "../views/Registro"),
-  },
-  {
-    path: "/edit-registro/:id",
-    name: "RegistroEdit",
-    // route level code-splitting
-    // this generates a separate chunk (proyectos.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "proyectos" */ "../views/Registro"),
+      import(/* webpackChunkName: "registro" */ "../views/Registro"),
   },
   {
     path: "/editProyect/:id",
     name: "editProyect",
     // route level code-splitting
-    // this generates a separate chunk (proyectos.[hash].js) for this route
+    // this generates a separate chunk (editProyect.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "proyectos" */ "../views/EditProyect"),
+      import(/* webpackChunkName: "editProyect" */ "../views/EditProyect"),
+  },
+  {
+    path:"/login",
+    name: "Login",
+    // route level code-splitting
+    // this generates a separate chunk (login.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/Login"),
+  },
+  {
+    path:"/loginIn",
+    name: "LoginIn",
+    // route level code-splitting
+    // this generates a separate chunk (login.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/LoginIn"),
   },
 ];
 

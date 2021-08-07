@@ -45,7 +45,7 @@
             v-model="registerProyect.date"
           />
         </div>
-        <div class="mb-3" style="background-color:#191919">
+        <div class="mb-3">
           <select
             class="form-select"
             aria-label="Default select example"
@@ -53,7 +53,6 @@
             v-model="registerProyect.langs"
             required
           >
-            <option selected>select langs</option>
             <option value="Vue">Vue</option>
             <option value="react">React</option>
             <option value="Js">JavaScript</option>
@@ -61,11 +60,23 @@
             <option value="C">C</option>
             <option value="css-html">Css-html</option>
           </select>
+          <label 
+          class="btn  btn-danger  mx-3 mt-3">
+            Sttatus  Proyect
+          </label>
+          <select
+            class="form-select mt-3"
+            aria-label="Default Render"
+            style="background-color:#191919;color:#ffffff"
+            v-model="registerProyect.status"
+            name=""
+            id=""
+          >
+            <option value="true">Render</option>
+            <option value="false">Delete</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-outline-light">Register</button>
-        <button @click="deleteProyect" href="#" class="btn  btn-danger  mx-3">
-          Delete
-        </button>
       </form>
       <hr />
       <!-- {{ registerProyect }} -->
@@ -94,6 +105,18 @@ export default {
       const data = await res.json();
       this.registerProyect = data;
     },
+    async deleteProyect() {
+      const deleteStatus = this.registerProyect.statu;
+      const res = await fetch(
+        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ deleteStatus: false }),
+        }
+      );
+      const data = await res.json();
+      console.log(deleteStatus);
+    },
     async updateProyect() {
       await fetch(
         `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
@@ -102,16 +125,6 @@ export default {
           body: JSON.stringify(this.registerProyect),
         }
       );
-    },
-    async deleteProyect() {
-      await fetch(
-        `https://vue-dlt-default-rtdb.firebaseio.com/Proyects/${this.id}.json`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({ status: false }),
-        }
-      );
-      console.log(this.registerProyect.status)
     },
   },
 };

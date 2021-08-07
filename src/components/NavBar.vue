@@ -33,7 +33,8 @@
             </li>
           </ul>
         </div>
-      <a href="" class="btn btn-outline-light">login on</a>
+        <router-link class="btn btn-outline-light" to="/login">Login Up</router-link>
+        <router-link class="btn btn-outline-light" to="/loginIN">Login In</router-link>
       </div>
     </nav>
   </div>
